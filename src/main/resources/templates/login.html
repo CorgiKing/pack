@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>登录</title>
+<!-- <script type="text/javascript" src="pack/../js/jquery-3.2.1.min.js"></script> -->
+<script type="text/javascript" src="/pack/js/head.js"></script>
+<script type="text/javascript" src="/pack/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="/pack/js/jquery.easyui.min.js"></script>
+<script>
+
+	function login() {
+		$('#LoginForm').form('submit', {
+			url : ctx+'/login',
+			success : function(data) {
+				var o = JSON.parse(data);
+//				alert(ctx);
+				if (o.success) {
+//					alert(o.message);
+					window.location.href = ctx+"/index";
+
+				} else {
+					alert(o.message);
+				}
+			}
+		});
+	}
+</script>
+</head>
+<body>
+	<form id="LoginForm" method="post">
+		<table>
+			<tr>
+				<td>账号:</td>
+				<td><input name="account" type="text"></input></td>
+			</tr>
+			<tr>
+				<td>密码:</td>
+				<td><input name="password" type="password"></input></td>
+			</tr>
+			<tr>
+				<td>验证码:</td>
+				<td><input name="verCode" type="text"></input></td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center">
+					<button type="button" onclick="login()">登录</button>
+				</td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>

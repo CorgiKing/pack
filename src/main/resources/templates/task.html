@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>任务</title>
+<!-- <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script> -->
+<script type="text/javascript" src="/pack/js/head.js"></script>
+ <script type="text/javascript" src="/pack/js/jquery-3.2.1.min.js"></script>
+ <script type="text/javascript" src="/pack/js/jquery.easyui.min.js"></script>
+<script>
+	function submitConnectForm() {
+		$('#connectForm').form('submit',{
+			url : ctx+'/remote/connect_test',
+			success : function(result) {
+				if(result == 1){
+					alert("连接成功!");
+				}else if(result == 2){
+					alert("连接失败!");
+				}else if(result == -1){
+					alert("异常");
+				}else{
+					alert("错误");
+				}
+			}
+		});
+	}
+	function submitTaskInfo(){
+		
+	}
+</script>
+<style>
+	.auto_area{ 
+		width:300px; 
+		height:100px; 
+	} 
+</style>
+<title>新建任务</title>
+
+</head>
+<body>
+
+	<form id="connectForm" method="post">
+		<table>
+			<tr>
+				<td>IP地址:</td>
+				<td><input name="ip_address" type="text"></input></td>
+			</tr>
+			<tr>
+				<td>用户名:</td>
+				<td><input name="username" type="text" /></td>
+			</tr>
+			<tr>
+				<td>密码:</td>
+				<td><input name="password" type="password" /></td>
+			</tr>
+			<tr>
+				<td><button id="connect" type="button"
+						onclick="submitConnectForm()" value="连接测试">连接测试</button></td>
+			</tr>
+		</table>
+	</form>
+	<table>
+		<tr>
+			<th>项目名称</th><td><input name="taskname" type="text" /></td>
+		</tr>
+	<tr>
+		<th>项目描述</th><td><input name="taskdescribe" type="text" /></td>
+	</tr>
+	<tr>
+		<th>操作步骤</th><td><textarea name="packstep" style="width:300px;height:100px;"></textarea></td>
+	</tr>
+	</table>
+	<button>提交</button>
+</body>
+</html>
